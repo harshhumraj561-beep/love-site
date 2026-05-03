@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Ayushi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+}
+
+/* INTRO */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#intro h1 {
+    font-size: 28px;
+    opacity: 0.8;
+}
+
+#heart {
+    font-size: 60px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* MAIN */
+#main {
+    display: none;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ffb6c1);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.card {
+    max-width: 700px;
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+}
+
+/* TYPEWRITER */
+#text {
+    font-size: 20px;
+    line-height: 1.8;
+    white-space: pre-line;
+    min-height: 250px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4d6d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>Ayushi… this is from Harsh</h1>
+    <div id="heart" onclick="start()">❤️</div>
+    <p>Tap the heart…</p>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+    <div class="card">
+        <div id="text"></div>
+        <button onclick="finalMessage()">Please forgive me 🥺</button>
+    </div>
+</div>
+
+<script>
+
+let message = `Babu...
+
+I'm really sorry.
+
+Sach me… jitna bhi hurt kiya hai na maine tumhe,
+uska mujhe genuinely regret hai.
+
+Ayushi, tum sirf meri girlfriend nahi ho...
+tum meri aadat ho, meri peace ho, meri duniya ho.
+
+Mujhe pata hai humare beech rough time aaya hai,
+aur shayad meri wajah se hi aaya hai.
+
+Par iss baar main bas bol nahi raha...
+main seriously change hona chahta hoon.
+
+Main nahi chahta ki hum khatam ho jayein,
+main chahta hoon ki hum aur strong ho jayein.
+
+Ek nayi shuruat karein…
+jahan sirf tum aur main ho,
+aur koi problem humse badi na ho.
+
+Please ek chance aur de do mujhe…
+
+Main tumhe lose nahi kar sakta.
+
+I love you, Ayushi.
+
+— Harsh ❤️`;
+
+let i = 0;
+
+function start() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+    typeWriter();
+    hearts();
+}
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35);
+    }
+}
+
+function finalMessage() {
+    alert("No matter what happens… I will always choose you ❤️ — Harsh");
+}
+
+/* Floating hearts */
+function hearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+
+</script>
+
+</body>
+</html>
